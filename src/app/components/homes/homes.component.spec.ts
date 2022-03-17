@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { spyOnClass } from 'jasmine-es6-spies';
+import { of } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 import { HomesComponent } from './homes.component';
 
@@ -6,15 +9,44 @@ describe('HomesComponent', () => {
   let component: HomesComponent;
   let fixture: ComponentFixture<HomesComponent>;
 
+  let dataService: DataService;
+  let dataServiceSpy: jasmine.SpyObj<DataService>;
+
   beforeEach(async () => {
+    const spy = jasmine.createSpyObj('DataService', ['getHomes$']);
+
     await TestBed.configureTestingModule({
       declarations: [HomesComponent],
+      providers: [{ provide: DataService, useValue: spy }],
     }).compileComponents();
+
+    dataService = TestBed.inject(DataService);
+    dataServiceSpy = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomesComponent);
     component = fixture.componentInstance;
+    const stubValue = of([
+      {
+        title: 'Home 1',
+        image: 'assets/image.jpeg',
+        location: 'New York',
+      },
+      {
+        title: 'Home 1',
+        image: '',
+        location: 'New York',
+      },
+      {
+        title: 'Home 1',
+        image: '',
+        location: 'New York',
+      },
+    ]);
+
+    dataServiceSpy.getHomes$.and.returnValue(stubValue);
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
