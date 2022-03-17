@@ -30,18 +30,18 @@ describe('HomesComponent', () => {
     const stubValue = of([
       {
         title: 'Home 1',
-        image: 'assets/image.jpeg',
+        image: 'assets/image1.jpeg',
         location: 'New York',
       },
       {
-        title: 'Home 1',
-        image: '',
-        location: 'New York',
+        title: 'Home 2',
+        image: 'assets/image1.jpeg',
+        location: 'Boston',
       },
       {
-        title: 'Home 1',
-        image: '',
-        location: 'New York',
+        title: 'Home 3',
+        image: 'assets/image1.jpeg',
+        location: 'Chicago',
       },
     ]);
 
@@ -71,6 +71,6 @@ describe('HomesComponent', () => {
       'New York'
     );
 
-    expect(home.querySelector('[data-test="image"]').innerText).toBeTruthy();
+    expect(home.querySelector('[data-test="image"]')).toBeTruthy();
   });
 });

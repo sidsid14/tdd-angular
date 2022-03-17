@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
@@ -11,9 +12,9 @@ export interface HomeInterface {
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getHomes$(): Observable<HomeInterface[]> {
-    return of<HomeInterface[]>([]);
+    return this.http.get<HomeInterface[]>('assets/homes.json');
   }
 }

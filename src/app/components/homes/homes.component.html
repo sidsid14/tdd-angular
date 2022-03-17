@@ -1,5 +1,22 @@
-<div data-test="home" *ngFor="let home of homes$ | async">
-  <div data-test="title">{{ home.title }}</div>
-  <div data-test="location">{{ home.location }}</div>
-  <div data-test="image">{{ home.image }}</div>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let home of homes$ | async">
+      <div class="card" data-test="home">
+        <img
+          [src]="home.image"
+          class="card-img-top"
+          [alt]="home.title"
+          data-test="image"
+        />
+        <div class="card-body">
+          <h5 data-test="title" class="card-title">{{ home.title }}</h5>
+          <p class="card-text">
+            <small class="text-muted" data-test="location">{{
+              home.location
+            }}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
