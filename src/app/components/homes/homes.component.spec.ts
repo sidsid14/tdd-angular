@@ -73,4 +73,10 @@ describe('HomesComponent', () => {
 
     expect(home.querySelector('[data-test="image"]')).toBeTruthy();
   });
+
+  it('should show book button', () => {
+    const home = fixture.nativeElement.querySelector('[data-test="home"]');
+
+    expect(home.querySelector('[data-test="book-btn"]')).toBeTruthy();
+  });
 });
