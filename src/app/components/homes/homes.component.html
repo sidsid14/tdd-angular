@@ -15,7 +15,13 @@
               home.location
             }}</small>
           </p>
-          <button data-test="book-btn" class="btn btn-primary">Book</button>
+          <button
+            (click)="openDialog()"
+            data-test="book-btn"
+            class="btn btn-primary"
+          >
+            Book
+          </button>
         </div>
       </div>
     </div>
