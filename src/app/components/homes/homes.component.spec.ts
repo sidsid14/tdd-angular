@@ -10,10 +10,7 @@ describe('HomesComponent', () => {
   let component: HomesComponent;
   let fixture: ComponentFixture<HomesComponent>;
 
-  // let dataService: DataService;
   let dataServiceSpy: jasmine.SpyObj<DataService>;
-
-  // let dialogService: DialogService;
   let dialogServiceSpy: jasmine.SpyObj<DialogService>;
 
   beforeEach(async () => {
@@ -28,10 +25,8 @@ describe('HomesComponent', () => {
       ],
     }).compileComponents();
 
-    // dataService = TestBed.inject(DataService);
     dataServiceSpy = TestBed.inject(DataService) as jasmine.SpyObj<DataService>;
 
-    // dialogService = TestBed.inject(DialogService);
     dialogServiceSpy = TestBed.inject(
       DialogService
     ) as jasmine.SpyObj<DialogService>;
