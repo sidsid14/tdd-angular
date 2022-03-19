@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { DialogService } from 'src/app/services/dialog.service';
 
 import { HomesComponent } from './homes.component';
+import { homes } from 'src/assets/homes';
 
 describe('HomesComponent', () => {
   let component: HomesComponent;
@@ -35,23 +36,8 @@ describe('HomesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomesComponent);
     component = fixture.componentInstance;
-    const stubValue = of([
-      {
-        title: 'Home 1',
-        image: 'assets/image1.jpeg',
-        location: 'New York',
-      },
-      {
-        title: 'Home 2',
-        image: 'assets/image1.jpeg',
-        location: 'Boston',
-      },
-      {
-        title: 'Home 3',
-        image: 'assets/image1.jpeg',
-        location: 'Chicago',
-      },
-    ]);
+    // const homes = require('../../../assets/homes.json');
+    const stubValue = of(homes);
 
     dataServiceSpy.getHomes$.and.returnValue(stubValue);
     component.ngOnInit();
