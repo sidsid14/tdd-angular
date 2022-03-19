@@ -69,7 +69,7 @@ describe('BookComponent', () => {
     fixture.detectChanges();
 
     const title = el('total');
-    expect(title.textContent).toContain('375');
+    expect(title.textContent).toContain('Total: $375');
   });
   // should book home after clicking Book button
 });

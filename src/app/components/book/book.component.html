@@ -6,4 +6,4 @@
 <div>
   <input data-test="check-out" [(ngModel)]="checkOut" type="date" />
 </div>
-<div data-test="total">{{ calculateTotal(checkIn, checkOut) }}</div>
+<div data-test="total">Total: ${{ calculateTotal(checkIn, checkOut) }}</div>
