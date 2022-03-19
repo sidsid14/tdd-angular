@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BookComponent } from './book.component';
 import { homes } from 'src/assets/homes';
+import { FormsModule } from '@angular/forms';
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -13,6 +14,7 @@ describe('BookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [BookComponent],
       providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
     }).compileComponents();
@@ -34,13 +36,13 @@ describe('BookComponent', () => {
   // should show title
   it('should show title', () => {
     const title = el('title');
-    expect(title.textContent).toContain('Home 1');
+    expect(title.textContent).toContain('Book Home 1');
   });
 
   // show show price
   it('should show price', () => {
     const title = el('price');
-    expect(title.textContent).toContain('125');
+    expect(title.textContent).toContain('$125 per night');
   });
 
   // should show check in date field
@@ -55,8 +57,19 @@ describe('BookComponent', () => {
 
   // should show total
   it('should show total', () => {
+    const checkIn = el('check-in');
+    const checkOut = el('check-out');
+
+    checkIn.value = '2022-03-19';
+    checkIn.dispatchEvent(new Event('input'));
+
+    checkOut.value = '2022-03-22';
+    checkOut.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+
     const title = el('total');
-    expect(title.textContent).toContain('125');
+    expect(title.textContent).toContain('375');
   });
   // should book home after clicking Book button
 });

@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-book',
@@ -7,9 +8,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./book.component.css'],
 })
 export class BookComponent implements OnInit {
+  checkIn: string = '';
+  checkOut: string = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
     console.log(this.data);
+  }
+
+  calculateTotal(checkIn: string, checkOut: string) {
+    if (checkIn == '' || checkOut == '') {
+      return;
+    }
+    const checkInDate = moment(checkIn);
+    const checkOutDate = moment(checkOut);
+    const nights = checkOutDate.diff(checkInDate, 'days');
+    return nights * this.data.home.price;
   }
 }

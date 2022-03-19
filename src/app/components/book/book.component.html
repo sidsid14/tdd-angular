@@ -1,9 +1,9 @@
-<div data-test="title">{{ data.home.title }}</div>
-<div data-test="price">{{ data.home.price }}</div>
-<div data-test="check-in">
-  <input />
+<div data-test="title">Book {{ data.home.title }}</div>
+<div data-test="price">${{ data.home.price }} per night</div>
+<div>
+  <input data-test="check-in" [(ngModel)]="checkIn" type="date" />
 </div>
-<div data-test="check-out">
-  <input />
+<div>
+  <input data-test="check-out" [(ngModel)]="checkOut" type="date" />
 </div>
-<div data-test="total">{{ data.home.price }}</div>
+<div data-test="total">{{ calculateTotal(checkIn, checkOut) }}</div>

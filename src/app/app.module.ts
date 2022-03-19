@@ -8,6 +8,7 @@ import { HomesComponent } from './components/homes/homes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BookComponent } from './components/book/book.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, HomesComponent, BookComponent],
@@ -16,6 +17,7 @@ import { BookComponent } from './components/book/book.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
