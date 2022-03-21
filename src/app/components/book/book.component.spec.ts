@@ -6,6 +6,7 @@ import { homes } from 'src/assets/homes';
 import { FormsModule } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('BookComponent', () => {
   let component: BookComponent;
@@ -29,6 +30,10 @@ describe('BookComponent', () => {
           useFactory: () => jasmine.createSpyObj('MatDialogRef', ['close']),
         },
         { provide: DataService, useValue: spy },
+        {
+          provide: MatSnackBar,
+          useFactory: () => jasmine.createSpyObj('MatSnackBar', ['open']),
+        },
       ],
     }).compileComponents();
 
@@ -98,7 +103,7 @@ describe('BookComponent', () => {
     expect(dataServiceSpy.bookHomes$).toHaveBeenCalled();
   });
 
-  it('should close book dialog after clicking book button', () => {
+  it('should close book dialog and show notification after clicking book button', () => {
     const checkIn = el('check-in');
     const checkOut = el('check-out');
 
@@ -113,5 +118,6 @@ describe('BookComponent', () => {
     fixture.detectChanges();
     el('book-btn').click();
     expect(component.dialogRef.close).toHaveBeenCalled();
+    expect(component.snackBar.open).toHaveBeenCalled();
   });
 });
