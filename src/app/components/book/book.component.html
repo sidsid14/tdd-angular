@@ -7,3 +7,6 @@
   <input data-test="check-out" [(ngModel)]="checkOut" type="date" />
 </div>
 <div data-test="total">Total: ${{ calculateTotal(checkIn, checkOut) }}</div>
+<button data-test="book-btn" (click)="bookHome()" class="btn btn-danger">
+  Book
+</button>
